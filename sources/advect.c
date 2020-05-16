@@ -273,7 +273,6 @@ int main(int argc,char *argv[]) {
   if ( !ier )  return(1);
 
   chrono(OFF,&adst.info.ctim[1]);
-  printim(adst.info.ctim[1].gdif,stim);
   if ( adst.info.verb != '0' )  fprintf(stdout," - COMPLETED: %s\n",stim);
 
   /* solve advection */
@@ -286,7 +285,6 @@ int main(int argc,char *argv[]) {
 
   chrono(OFF,&adst.info.ctim[2]);
   if ( adst.info.verb != '0' ) {
-		printim(adst.info.ctim[2].gdif,stim);
     fprintf(stdout," ** COMPLETED: %s\n\n",stim);
 	}
 
@@ -304,7 +302,6 @@ int main(int argc,char *argv[]) {
 	if ( !ier )   return(1);
   chrono(OFF,&adst.info.ctim[3]);
   if ( adst.info.verb != '0' ) {
-    printim(adst.info.ctim[3].gdif,stim);
     fprintf(stdout," - COMPLETED: %s\n",stim);
   }
 
@@ -314,7 +311,6 @@ int main(int argc,char *argv[]) {
 
   chrono(OFF,&adst.info.ctim[0]);
   if ( adst.info.verb != '0' ) {
-    printim(adst.info.ctim[0].gdif,stim);
     fprintf(stdout,"\n ** Cumulative time: %s.\n",stim);
   }
 

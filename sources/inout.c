@@ -1,5 +1,5 @@
 #include "advect.h"
-#include "libmesh5.h"
+#include "libmeshb7.h"
 
 
 int loadMesh(ADst *adst) {
@@ -8,7 +8,7 @@ int loadMesh(ADst *adst) {
   pTria      pt1;
   double    *a,*b,dd;
   float      fp1,fp2,fp3;
-  int        i,i1,k,inm;
+  int64_t    i,i1,k,inm;
   char      *ptr,data[128];
   static int edg[6][2] = {0,1, 0,2, 0,3, 1,2, 1,3, 2,3};
 
@@ -130,7 +130,7 @@ int loadMesh(ADst *adst) {
 int loadSol(ADst *adst) {
   double       bufd[GmfMaxTyp],dd;
   float        buf[GmfMaxTyp];
-  int          i,k,dim,ver,np,inm,type,size,offset,typtab[GmfMaxTyp];
+  int64_t      i,k,dim,ver,np,inm,type,size,offset,typtab[GmfMaxTyp];
   char        *ptr,data[128];
 
 	if ( !adst->sol.namein )  return(-1);
@@ -204,7 +204,7 @@ int loadSol(ADst *adst) {
 int loadChi(ADst *adst) {
   double       bufd[GmfMaxTyp];
   float        buf[GmfMaxTyp];
-  int          k,inm,np,ver,dim,type,size,typtab[GmfMaxTyp];
+  int64_t      k,inm,np,ver,dim,type,size,typtab[GmfMaxTyp];
   char        *ptr,data[128];
 
   if ( !adst->sol.namechi )  return(-1);
@@ -264,7 +264,7 @@ int loadChi(ADst *adst) {
 
 int saveChi(ADst *adst) {
   double       dbuf[GmfMaxTyp];
-  int          i,k,outm,type,typtab[GmfMaxTyp];
+  int64_t      i,k,outm,type,typtab[GmfMaxTyp];
   char        *ptr,data[128];
 
   strcpy(data,adst->sol.nameout);  

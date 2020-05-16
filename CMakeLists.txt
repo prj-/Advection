@@ -1,4 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
+ENABLE_LANGUAGE(C)
+include(GNUInstallDirs)
 set(CMAKE_BUILD_TYPE  "Release")
 INCLUDE_DIRECTORIES(  "$ENV{HOME}/include")
 LINK_DIRECTORIES(     "$ENV{HOME}/lib")
@@ -13,14 +15,14 @@ file(                  GLOB_RECURSE header_files sources/*.h)
 ADD_LIBRARY(           Advection SHARED ${source_files})
 find_library(          Commons NAMES Commons HINTS "$ENV{HOME}/lib")
 target_link_libraries( Advection ${Commons})
-INSTALL(               TARGETS Advection LIBRARY  DESTINATION "$ENV{HOME}/lib")
-INSTALL(               FILES ${header_files} DESTINATION "$ENV{HOME}/include")
+INSTALL(               TARGETS Advection LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+INSTALL(               FILES ${header_files} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
 #Executable
 project(main)
 add_executable(        advect sources/advect.c)
-target_link_libraries( advect Commons Advection)
-INSTALL(               TARGETS advect RUNTIME DESTINATION "$ENV{HOME}/bin")
+target_link_libraries( advect ${Commons} Advection)
+INSTALL(               TARGETS advect RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 
  
 

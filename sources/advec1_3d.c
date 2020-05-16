@@ -497,6 +497,7 @@ int advec1_3d(ADst *adst) {
   nt = 0;
   for (k=1; k<=adst->info.ne; k++) {
     pt = &adst->mesh.tetra[k];
+    /* TODO pt->ref SKIP FIXME */
     for (i=0; i<4; i++) {
       ip  = pt->v[i];
       ppt = &adst->mesh.point[ip];
