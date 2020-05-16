@@ -11,6 +11,8 @@ before_script:
   - cd libMeshb/build
   - cmake .. -DCMAKE_INSTALL_PREFIX=/tmp/install
   - make
+  - wget https://raw.githubusercontent.com/FreeFem/FreeFem-sources/develop/src/libMesh/chrono.h
+  - mv chrono.h ../sources
   - cd -
 script:
   - mkdir build
