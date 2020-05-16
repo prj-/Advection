@@ -6,17 +6,17 @@ os:
   - linux
   - osx
 before_script:
-  - git clone https://github.com/ICStoolbox/Commons.git
-  - mkdir Commons/build
-  - cd Commons/build
-  - cmake ..
-  - make 
+  - git clone https://github.com/LoicMarechal/libMeshb
+  - mkdir libMeshb/build
+  - cd libMeshb/build
+  - cmake .. -DCMAKE_INSTALL_PREFIX=/tmp/install
+  - make
   - make install
   - cd -
 script:
   - mkdir build
   - cd build
-  - cmake ..
+  - cmake .. -DCommons=/tmp/install/lib/libMeshb.7.a -DCMAKE_C_FLAGS=-I/tmp/install/include
   - make
   - make install
   - cd -
